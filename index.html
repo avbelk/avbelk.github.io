@@ -3,12 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Мой первый сайт</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Результаты квиза</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Привет, мир!</h1>
-    <p>Это мой первый сайт.</p>
-    <img src="https://via.placeholder.com/300" alt="Пример картинки">
+    <h1>Результаты квиза</h1>
+    
+    <div class="table-container">
+        <table id="results-table">
+            <thead>
+                <tr>
+                    <th>№ игры</th>
+                    <th>Команда</th>
+                    <th>Турнир</th>
+                    <th>Игра</th>
+                    <th>1</th>
+                    <th>2</th>
+                    <th>3</th>
+                    <th>4</th>
+                    <th>5</th>
+                    <th>6</th>
+                    <th>7</th>
+                    <th>Итого</th>
+                    <th>Место</th>
+                    <th>Баллы</th>
+                </tr>
+            </thead>
+            <tbody id="table-body">
+                <!-- Данные будут загружены из results.js -->
+            </tbody>
+        </table>
+    </div>
+
+    <script src="results.js"></script>
+    <script>
+        // Функция для заполнения таблицы данными
+        function populateTable() {
+            const tableBody = document.getElementById('table-body');
+            
+            quizResults.forEach(result => {
+                const row = document.createElement('tr');
+                if (result.place <= 3) {
+                    row.classList.add('highlight');
+                }
+                
+                row.innerHTML = `
+                    <td>${result.gameNumber}</td>
+                    <td>${result.team}</td>
+                    <td>${result.tournament}</td>
+                    <td>${result.game}</td>
+                    <td>${result.round1}</td>
+                    <td>${result.round2}</td>
+                    <td>${result.round3}</td>
+                    <td>${result.round4}</td>
+                    <td>${result.round5}</td>
+                    <td>${result.round6}</td>
+                    <td>${result.round7}</td>
+                    <td>${result.total}</td>
+                    <td>${result.place}</td>
+                    <td>${result.points}</td>
+                `;
+                
+                tableBody.appendChild(row);
+            });
+        }
+        
+        // Вызываем функцию после загрузки страницы
+        document.addEventListener('DOMContentLoaded', populateTable);
+    </script>
 </body>
 </html>
