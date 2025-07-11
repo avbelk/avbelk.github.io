@@ -1,23 +1,52 @@
+// Добавляем глобальный объект для хранения состояния сортировки
+const sortState = {};
+
 function sortTable(columnIndex) {
   const table = document.querySelector('table');
   const tbody = table.querySelector('tbody');
   const rows = Array.from(tbody.querySelectorAll('tr'));
+  const headerCells = table.querySelectorAll('th');
+
+  // Сбрасываем классы сортировки у всех заголовков
+  headerCells.forEach(cell => {
+    cell.classList.remove('sorted-asc', 'sorted-desc');
+  });
+
+  // Определяем направление сортировки
+  const currentHeader = headerCells[columnIndex];
+  let sortDirection = 'asc';
+
+  // Если уже сортировали по этой колонке, меняем направление
+  if (sortState.columnIndex === columnIndex) {
+    sortDirection = sortState.direction === 'asc' ? 'desc' : 'asc';
+  }
+
+  // Сохраняем состояние сортировки
+  sortState.columnIndex = columnIndex;
+  sortState.direction = sortDirection;
+
+  // Добавляем класс для визуального отображения направления
+  currentHeader.classList.add(`sorted-${sortDirection}`);
 
   // Сортируем строки
   rows.sort((a, b) => {
     const aValue = a.cells[columnIndex].textContent.trim();
     const bValue = b.cells[columnIndex].textContent.trim();
-    
-    // Если числа — сортируем как числа
+
+    // Для числовых колонок
     if (!isNaN(aValue) && !isNaN(bValue)) {
-      return Number(aValue) - Number(bValue);
+      const numA = Number(aValue);
+      const numB = Number(bValue);
+      return sortDirection === 'asc' ? numA - numB : numB - numA;
     }
-    
-    // Если текст — сортируем как строки
-    return aValue.localeCompare(bValue);
+
+    // Для текстовых колонок
+    return sortDirection === 'asc' 
+      ? aValue.localeCompare(bValue) 
+      : bValue.localeCompare(aValue);
   });
 
-  // Очищаем таблицу и вставляем отсортированные строки
+  // Очищаем и перезаполняем tbody
   tbody.innerHTML = '';
   rows.forEach(row => tbody.appendChild(row));
 }
