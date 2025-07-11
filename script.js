@@ -84,3 +84,27 @@ function highlightWinners() {
         }
     });
 }
+
+function sortTable(columnIndex) {
+  const table = document.querySelector('table');
+  const tbody = table.querySelector('tbody');
+  const rows = Array.from(tbody.querySelectorAll('tr'));
+
+  // Сортируем строки
+  rows.sort((a, b) => {
+    const aValue = a.cells[columnIndex].textContent.trim();
+    const bValue = b.cells[columnIndex].textContent.trim();
+    
+    // Если числа — сортируем как числа
+    if (!isNaN(aValue) && !isNaN(bValue)) {
+      return Number(aValue) - Number(bValue);
+    }
+    
+    // Если текст — сортируем как строки
+    return aValue.localeCompare(bValue);
+  });
+
+  // Очищаем таблицу и вставляем отсортированные строки
+  tbody.innerHTML = '';
+  rows.forEach(row => tbody.appendChild(row));
+}
