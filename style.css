@@ -88,3 +88,29 @@ tr:hover {
         padding: 8px 10px;
     }
 }
+
+/* Подсветка лучших результатов в раундах */
+.highlight-round {
+    background-color: #e6f7ff !important;
+    font-weight: bold;
+    position: relative;
+}
+
+.highlight-round::after {
+    content: '★';
+    color: #ff6b6b;
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    font-size: 10px;
+}
+
+/* Анимация при наведении на строку */
+tr {
+    transition: all 0.2s ease;
+}
+
+tr:hover {
+    transform: scale(1.01);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
