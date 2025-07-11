@@ -3,73 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Результаты квиза</title>
+    <title>Результаты игр</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <h1>Результаты квиза</h1>
-    
-    <div class="table-container">
-        <table id="results-table">
-            <thead>
-                <tr>
-                    <th>№ игры</th>
-                    <th>Команда</th>
-                    <th>Турнир</th>
-                    <th>Игра</th>
-                    <th>1</th>
-                    <th>2</th>
-                    <th>3</th>
-                    <th>4</th>
-                    <th>5</th>
-                    <th>6</th>
-                    <th>7</th>
-                    <th>Итого</th>
-                    <th>Место</th>
-                    <th>Баллы</th>
-                </tr>
-            </thead>
-            <tbody id="table-body">
-                <!-- Данные будут загружены из results.js -->
-            </tbody>
-        </table>
+    <div class="container">
+        <h1>Результаты турнира</h1>
+        <div class="table-container">
+            <table id="resultsTable">
+                <thead>
+                    <tr>
+                        <th onclick="sortTable(0)">№ <i class="fas fa-sort"></i></th>
+                        <th onclick="sortTable(1)">Команда <i class="fas fa-sort"></i></th>
+                        <th onclick="sortTable(2)">Турнир <i class="fas fa-sort"></i></th>
+                        <th onclick="sortTable(3)">Игра <i class="fas fa-sort"></i></th>
+                        <th onclick="sortTable(4)">Раунд 1 <i class="fas fa-sort"></i></th>
+                        <th onclick="sortTable(5)">Раунд 2 <i class="fas fa-sort"></i></th>
+                        <th onclick="sortTable(6)">Раунд 3 <i class="fas fa-sort"></i></th>
+                        <th onclick="sortTable(7)">Раунд 4 <i class="fas fa-sort"></i></th>
+                        <th onclick="sortTable(8)">Раунд 5 <i class="fas fa-sort"></i></th>
+                        <th onclick="sortTable(9)">Раунд 6 <i class="fas fa-sort"></i></th>
+                        <th onclick="sortTable(10)">Раунд 7 <i class="fas fa-sort"></i></th>
+                        <th onclick="sortTable(11)">Итого <i class="fas fa-sort"></i></th>
+                        <th onclick="sortTable(12)">Место <i class="fas fa-sort"></i></th>
+                        <th onclick="sortTable(13)">Очки <i class="fas fa-sort"></i></th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody"></tbody>
+            </table>
+        </div>
     </div>
-
     <script src="results.js"></script>
-    <script>
-        // Функция для заполнения таблицы данными
-        function populateTable() {
-            const tableBody = document.getElementById('table-body');
-            
-            quizResults.forEach(result => {
-                const row = document.createElement('tr');
-                if (result.place <= 3) {
-                    row.classList.add('highlight');
-                }
-                
-                row.innerHTML = `
-                    <td>${result.gameNumber}</td>
-                    <td>${result.team}</td>
-                    <td>${result.tournament}</td>
-                    <td>${result.game}</td>
-                    <td>${result.round1}</td>
-                    <td>${result.round2}</td>
-                    <td>${result.round3}</td>
-                    <td>${result.round4}</td>
-                    <td>${result.round5}</td>
-                    <td>${result.round6}</td>
-                    <td>${result.round7}</td>
-                    <td>${result.total}</td>
-                    <td>${result.place}</td>
-                    <td>${result.points}</td>
-                `;
-                
-                tableBody.appendChild(row);
-            });
-        }
-        
-        // Вызываем функцию после загрузки страницы
-        document.addEventListener('DOMContentLoaded', populateTable);
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>

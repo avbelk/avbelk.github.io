@@ -1,55 +1,90 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
-    background-color: #f5f5f5;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f7fa;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    padding: 30px;
 }
 
 h1 {
-    color: #333;
     text-align: center;
+    color: #2c3e50;
+    margin-bottom: 30px;
 }
 
 .table-container {
     overflow-x: auto;
-    margin: 20px 0;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
-    background-color: white;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    margin: 0 auto;
+    font-size: 14px;
 }
 
 th, td {
     padding: 12px 15px;
     text-align: center;
-    border: 1px solid #ddd;
+    border-bottom: 1px solid #e0e0e0;
 }
 
 th {
-    background-color: #4CAF50;
+    background-color: #3498db;
     color: white;
-    position: sticky;
-    top: 0;
+    font-weight: 600;
+    cursor: pointer;
+    position: relative;
+    transition: background-color 0.3s;
+}
+
+th:hover {
+    background-color: #2980b9;
+}
+
+th i {
+    margin-left: 5px;
 }
 
 tr:nth-child(even) {
-    background-color: #f2f2f2;
+    background-color: #f8f9fa;
 }
 
 tr:hover {
-    background-color: #e6f7e6;
+    background-color: #f1f1f1;
 }
 
 .highlight {
+    background-color: #fffacd !important;
     font-weight: bold;
-    background-color: #e6f7e6;
+}
+
+.medal-gold {
+    background-color: #ffd700 !important;
+}
+
+.medal-silver {
+    background-color: #c0c0c0 !important;
+}
+
+.medal-bronze {
+    background-color: #cd7f32 !important;
 }
 
 @media (max-width: 768px) {
+    table {
+        font-size: 12px;
+    }
     th, td {
         padding: 8px 10px;
-        font-size: 14px;
     }
 }
