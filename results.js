@@ -1,4 +1,4 @@
-const quizResults = [
+const resultsData = [
     {
         gameNumber: 306,
         team: "4 извилины",
