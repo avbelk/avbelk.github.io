@@ -1,116 +1,98 @@
+/* Общие стили */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f5f7fa;
-    margin: 0;
-    padding: 20px;
-    color: #333;
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    padding: 30px;
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 20px;
+  background-color: #f5f5f5;
+  color: #333;
 }
 
 h1 {
-    text-align: center;
-    color: #2c3e50;
-    margin-bottom: 30px;
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 20px;
 }
 
-.table-container {
-    overflow-x: auto;
-}
-
+/* Стили таблицы */
 table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 0 auto;
-    font-size: 14px;
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px auto;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background-color: white;
 }
 
 th, td {
-    padding: 12px 15px;
-    text-align: center;
-    border-bottom: 1px solid #e0e0e0;
+  padding: 12px 15px;
+  text-align: center;
+  border: 1px solid #ddd;
 }
 
 th {
-    background-color: #3498db;
-    color: white;
-    font-weight: 600;
-    cursor: pointer;
-    position: relative;
-    transition: background-color 0.3s;
-}
-
-th:hover {
-    background-color: #2980b9;
-}
-
-th i {
-    margin-left: 5px;
+  background-color: #3498db;
+  color: white;
+  font-weight: bold;
 }
 
 tr:nth-child(even) {
-    background-color: #f8f9fa;
+  background-color: #f2f2f2;
 }
 
 tr:hover {
-    background-color: #f1f1f1;
+  background-color: #e3f2fd;
 }
 
-.highlight {
-    background-color: #fffacd !important;
-    font-weight: bold;
+/* Стили для мест (1, 2, 3) */
+.place-1 {
+  background-color: #fffacd; /* Золото */
+  font-weight: bold;
 }
 
-.medal-gold {
-    background-color: #ffd700 !important;
+.place-2 {
+  background-color: #e6e6fa; /* Серебро */
 }
 
-.medal-silver {
-    background-color: #c0c0c0 !important;
+.place-3 {
+  background-color: #f5deb3; /* Бронза */
 }
 
-.medal-bronze {
-    background-color: #cd7f32 !important;
+/* Стили для иконок медалей */
+.medal {
+  font-size: 1.2em;
+  margin-right: 5px;
 }
 
+.gold {
+  color: gold;
+}
+
+.silver {
+  color: silver;
+}
+
+.bronze {
+  color: #cd7f32; /* бронза */
+}
+
+/* Адаптивность для мобильных */
 @media (max-width: 768px) {
-    table {
-        font-size: 12px;
-    }
-    th, td {
-        padding: 8px 10px;
-    }
+  table {
+    font-size: 14px;
+  }
+  
+  th, td {
+    padding: 8px 10px;
+  }
 }
 
-/* Подсветка лучших результатов в раундах */
-.highlight-round {
-    background-color: #e6f7ff !important;
-    font-weight: bold;
-    position: relative;
+/* Дополнительные стили для заголовков раундов */
+.round-header {
+  background-color: #2980b9 !important;
 }
 
-.highlight-round::after {
-    content: '★';
-    color: #ff6b6b;
-    position: absolute;
-    top: 2px;
-    right: 2px;
-    font-size: 10px;
-}
-
-/* Анимация при наведении на строку */
-tr {
-    transition: all 0.2s ease;
-}
-
-tr:hover {
-    transform: scale(1.01);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+/* Подсветка победителя */
+.winner {
+  font-weight: bold;
+  color: #e74c3c;
 }
