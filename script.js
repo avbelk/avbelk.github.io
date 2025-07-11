@@ -1,37 +1,46 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Проверяем, что данные загружены
-    if (typeof resultsData !== 'undefined') {
-        populateTable();
-        // Добавляем подсветку призовых мест
-        highlightWinners();
-    } else {
-        console.error('Данные не загружены! Проверьте файл results.js');
+    // Проверка загрузки данных
+    if (typeof resultsData === 'undefined') {
+        console.error('Ошибка: Данные не загружены! Проверьте файл results.js');
+        return;
     }
+
+    populateTable();
+    highlightWinners();
+    
+    // Добавляем обработчики сортировки
+    document.querySelectorAll('th').forEach((th, index) => {
+        th.addEventListener('click', () => sortTable(index));
+    });
 });
 
 function populateTable() {
     const tableBody = document.getElementById('tableBody');
-    tableBody.innerHTML = ''; // Очищаем таблицу перед заполнением
+    if (!tableBody) {
+        console.error('Ошибка: Не найден элемент tableBody');
+        return;
+    }
+
+    tableBody.innerHTML = '';
     
     resultsData.forEach((row, index) => {
         const tr = document.createElement('tr');
         
-        // Добавляем номер строки
         tr.innerHTML = `
             <td>${index + 1}</td>
-            <td>${row.team}</td>
-            <td>${row.tournament}</td>
-            <td>${row.game}</td>
-            <td>${row.round1}</td>
-            <td>${row.round2}</td>
-            <td>${row.round3}</td>
-            <td>${row.round4}</td>
-            <td>${row.round5}</td>
-            <td>${row.round6}</td>
-            <td>${row.round7}</td>
-            <td>${row.total}</td>
-            <td>${row.place}</td>
-            <td>${row.points}</td>
+            <td>${row.team || '-'}</td>
+            <td>${row.tournament || '-'}</td>
+            <td>${row.game || '-'}</td>
+            <td>${row.round1 || 0}</td>
+            <td>${row.round2 || 0}</td>
+            <td>${row.round3 || 0}</td>
+            <td>${row.round4 || 0}</td>
+            <td>${row.round5 || 0}</td>
+            <td>${row.round6 || 0}</td>
+            <td>${row.round7 || 0}</td>
+            <td>${row.total || 0}</td>
+            <td>${row.place || '-'}</td>
+            <td>${row.points || 0}</td>
         `;
         
         tableBody.appendChild(tr);
